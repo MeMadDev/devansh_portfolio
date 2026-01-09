@@ -90,14 +90,14 @@ export default function Experience() {
                                 {/* Desktop Content */}
                                 <div className="hidden md:block">
                                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{item.role}</h3>
-                                    <div className="text-lg font-medium text-blue-600 dark:text-blue-400 mb-4">{item.company}</div>
+                                    <div className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-4">{item.company}</div>
                                     <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">{item.description}</p>
                                 </div>
 
                                 {/* Mobile/Tablet View (Content + Date stacked) */}
                                 <div className="md:hidden ml-24 relative pl-4 border-l border-gray-100 dark:border-zinc-800">
                                     <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{item.role}</h3>
-                                    <div className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">{item.company}</div>
+                                    <div className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-2">{item.company}</div>
                                     <div className="flex items-center gap-2 text-xs text-gray-500 font-medium mb-3">
                                         <Calendar size={12} />
                                         {item.period}

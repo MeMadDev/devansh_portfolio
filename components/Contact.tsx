@@ -145,7 +145,7 @@ export default function Contact() {
 
                             <button
                                 type="submit"
-                                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all hover:scale-[1.02] shadow-lg shadow-blue-500/25"
+                                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-black dark:bg-white text-white dark:text-black font-semibold hover:opacity-80 transition-all hover:scale-[1.02] shadow-lg"
                             >
                                 <Send size={20} />
                                 Send Message

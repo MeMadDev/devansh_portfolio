@@ -158,8 +158,8 @@ function SkillChip({ skill, constraintsRef, index }: { skill: any, constraintsRe
             className="relative"
         >
             <div className={`px-4 py-2 rounded-xl border shadow-sm transition-all duration-300 select-none flex items-center justify-center min-w-[80px] ${showRating
-                ? "bg-blue-600 border-blue-600 text-white shadow-blue-500/25 shadow-md"
-                : "bg-white dark:bg-zinc-800 border-gray-200 dark:border-zinc-700 text-gray-700 dark:text-gray-200 hover:border-blue-400"
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 border-transparent text-white shadow-blue-500/25 shadow-md"
+                    : "bg-white dark:bg-zinc-800 border-gray-200 dark:border-zinc-700 text-gray-700 dark:text-gray-200 hover:border-blue-400"
                 }`}>
                 <span className="text-sm font-semibold whitespace-nowrap flex items-center gap-1">
                     {showRating ? (
