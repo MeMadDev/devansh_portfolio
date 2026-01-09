@@ -9,21 +9,21 @@ const EXPERIENCE = [
         role: "Software Engineer",
         company: "IndiaMART",
         period: "Apr 2025 - Present",
-        description: "Developed end-to-end WhatsApp messaging module and AI-based automation system for spam call review (10K+ calls daily, 90% reduction). Migrated 100+ Oracle queries to PostgreSQL."
+        description: "Built an end-to-end WhatsApp messaging platform and an AI-based spam call review system processing 10K+ calls/day, reducing manual effort by 90%+. Migrated and optimized 100+ Oracle queries to PostgreSQL for performance and scalability."
     },
     {
         type: "work",
         role: "Software Developer",
         company: "Logy.ai",
         period: "Jan 2024 - Mar 2025",
-        description: "Engineered scalable Next.js app with WebSockets handling 3M+ users. Implemented ClickHouse reducing query times by 100x. Built GenAI chat review portal focusing on NPS improvement."
+        description: "Engineered a real-time Next.js application supporting 3M+ users with 5× faster workflows. Implemented ClickHouse analytics achieving 100× faster queries and built a GenAI chat review portal improving NPS from 32% to 55%."
     },
     {
         type: "work",
         role: "Front-End Developer Intern",
         company: "YourDigitalBuddies",
         period: "Dec 2022 - Feb 2023",
-        description: "Implemented front-end best practices leading to 30% increase in conversion rates."
+        description: "Delivered conversion-focused UI improvements using modern frontend best practices, resulting in a 30%+ increase in conversion rates."
     },
     {
         type: "education",
