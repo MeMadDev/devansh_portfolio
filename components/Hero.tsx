@@ -33,7 +33,7 @@ export default function Hero() {
 
                         <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto md:mx-0">
                             Building scalable backend systems and crafting responsive frontend experiences.
-                            Specialized in Go, React, and Cloud technologies.
+                            Specialized in Python, React, and Cloud technologies.
                         </p>
 
                         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
