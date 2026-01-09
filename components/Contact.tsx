@@ -51,13 +51,13 @@ export default function Contact() {
 
                         <div className="flex flex-wrap gap-4 mb-12">
                             <a
-                                href="/resume.pdf"
+                                href="https://drive.google.com/file/d/1qVGwrKU3VM2jMYEjp66yH48YqE8NwEYN/view?usp=sharing"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black font-semibold hover:opacity-90 transition-opacity"
                             >
                                 <Download size={20} />
-                                Download CV
+                                Open Resume
                             </a>
                         </div>
 
