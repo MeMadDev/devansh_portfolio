@@ -32,8 +32,7 @@ export default function Hero() {
                         </h1>
 
                         <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto md:mx-0">
-                            Building scalable backend systems and crafting responsive frontend experiences.
-                            Specialized in Python, React, and Cloud technologies.
+                            Building scalable systems, real-time applications, and AI-powered automation. Specialized in Python, React, and cloud technologies with a strong focus on performance and impact.
                         </p>
 
                         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
