@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Code2, Database, Terminal, Layout, Star } from "lucide-react";
+import { useRef, useState } from "react";
 
-// Skills data with ratings
+// Restored and Expanded Categories
 const SKILL_CATEGORIES = [
     {
         title: "Languages",
@@ -16,172 +17,158 @@ const SKILL_CATEGORIES = [
             { name: "TypeScript", rating: 5 },
             { name: "JavaScript", rating: 5 },
             { name: "SQL", rating: 4.5 },
-            { name: "HTML", rating: 5 },
-            { name: "CSS", rating: 5 }
+            { name: "HTML/CSS", rating: 5 }
         ]
     },
     {
-        title: "Frameworks & Libraries",
+        title: "Frameworks",
         icon: <Layout className="w-6 h-6" />,
         skills: [
-            { name: "Django", rating: 4.5 },
             { name: "Next.js", rating: 5 },
-            { name: "React.js", rating: 5 },
+            { name: "React", rating: 5 },
+            { name: "Django", rating: 4.5 },
+            { name: "FastAPI", rating: 4.5 },
             { name: "Flask", rating: 4 },
-            { name: "Bootstrap", rating: 4.5 },
-            { name: "Tailwind CSS", rating: 5 }
+            { name: "Tailwind", rating: 5 }
         ]
     },
     {
-        title: "Databases",
+        title: "Database & Cloud",
         icon: <Database className="w-6 h-6" />,
         skills: [
             { name: "PostgreSQL", rating: 4.5 },
-            { name: "MySQL", rating: 4.5 },
-            { name: "SQLite", rating: 4 },
             { name: "ClickHouse", rating: 4 },
-            { name: "MongoDB", rating: 4 }
+            { name: "Redis", rating: 4.5 },
+            { name: "AWS", rating: 4 },
+            { name: "Docker", rating: 4.5 },
+            { name: "Kubernetes", rating: 4 }
         ]
     },
     {
-        title: "Tools & DevOps",
+        title: "Tools & Architectures",
         icon: <Terminal className="w-6 h-6" />,
         skills: [
             { name: "Git", rating: 5 },
-            { name: "Docker", rating: 4.5 },
-            { name: "AWS", rating: 4 },
-            { name: "Linux", rating: 4.5 },
-            { name: "Figma", rating: 4 },
-            { name: "CI/CD", rating: 4 }
+            { name: "Microservices", rating: 4.5 },
+            { name: "WebSockets", rating: 4.5 },
+            { name: "CI/CD", rating: 4 },
+            { name: "System Design", rating: 4 },
+            { name: "Linux", rating: 4.5 }
         ]
     }
 ];
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1
-        }
-    }
-};
-
-const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-        y: 0,
-        opacity: 1
-    }
-};
-
 export default function Skills() {
     return (
         <section id="skills" className="py-24 bg-gray-50 dark:bg-zinc-900/30 relative overflow-hidden">
-            {/* Background Decorative Elements */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute -top-[20%] -right-[10%] w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-3xl" />
-                <div className="absolute -bottom-[20%] -left-[10%] w-[500px] h-[500px] rounded-full bg-purple-500/5 blur-3xl" />
-            </div>
+            {/* Background Mesh */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
 
-            <div className="container mx-auto px-6 max-w-6xl relative z-10">
-                <div className="flex flex-col gap-4 mb-16 text-center">
+            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+                <div className="text-center mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-bold tracking-tight"
+                        className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
                     >
                         Technical Arsenal
                     </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg"
-                    >
-                        Hover over a skill to see my proficiency level.
-                    </motion.p>
+                    <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
+                        Categorized expertise. <span className="text-blue-600 font-semibold">Drag</span> the chips around!
+                    </p>
                 </div>
 
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-8"
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {SKILL_CATEGORIES.map((category, index) => (
-                        <motion.div
-                            key={index}
-                            variants={itemVariants}
-                            className="bg-white dark:bg-black/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 group"
-                        >
-                            <div className="flex items-center gap-4 mb-8">
-                                <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
-                                    {category.icon}
-                                </div>
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                                    {category.title}
-                                </h3>
-                            </div>
-
-                            <div className="flex flex-wrap gap-3">
-                                {category.skills.map((skill) => (
-                                    <div key={skill.name} className="relative w-max h-10 perspective-1000 group/skill cursor-pointer">
-                                        <motion.div
-                                            className="relative w-full h-full duration-500 preserve-3d group-hover/skill:rotate-y-180"
-                                            initial={false}
-                                            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                        >
-                                            {/* Front Side */}
-                                            <div className="absolute inset-0 backface-hidden">
-                                                <span className="flex items-center justify-center px-4 py-2 bg-gray-50 dark:bg-zinc-900/80 text-gray-700 dark:text-gray-300 rounded-xl text-sm font-medium border border-gray-100 dark:border-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-800 transition-colors h-full w-full whitespace-nowrap">
-                                                    {skill.name}
-                                                </span>
-                                            </div>
-
-                                            {/* Back Side */}
-                                            <div className="absolute inset-0 backface-hidden rotate-y-180">
-                                                <span className="flex items-center justify-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-medium h-full w-full whitespace-nowrap shadow-md">
-                                                    {skill.rating} <Star size={12} fill="currentColor" />
-                                                </span>
-                                            </div>
-                                        </motion.div>
-                                        {/* Invisible spacer to set width based on content */}
-                                        <div className="opacity-0 px-4 py-2 text-sm font-medium pointer-events-none whitespace-nowrap">
-                                            {skill.name}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
+                        <CategoryCard key={index} category={category} index={index} />
                     ))}
-                </motion.div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function CategoryCard({ category, index }: { category: any, index: number }) {
+    const containerRef = useRef(null);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="flex flex-col bg-white dark:bg-black border border-gray-200 dark:border-zinc-800 rounded-2xl p-6 shadow-lg relative overflow-hidden group"
+        >
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-6 relative z-10">
+                <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 group-hover:rotate-6 transition-transform duration-300">
+                    {category.icon}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                    {category.title}
+                </h3>
             </div>
 
-            <style jsx global>{`
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        .preserve-3d {
-          transform-style: preserve-3d;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-        }
-        .rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-        .group-hover\/skill\:rotate-y-180:hover {
-            transform: rotateY(180deg);
-        }
-        /* Custom class for hover effect since tailwind arbitrary variants can be tricky with some parsers */
-        .group\/skill:hover .group-hover\/skill\:rotate-y-180 {
-            transform: rotateY(180deg);
-        }
-      `}</style>
-        </section>
+            {/* Draggable Area */}
+            <div
+                ref={containerRef}
+                className="flex flex-wrap gap-3 min-h-[150px] content-start relative z-20"
+            >
+                {category.skills.map((skill: any, idx: number) => (
+                    <SkillChip
+                        key={idx}
+                        skill={skill}
+                        constraintsRef={containerRef}
+                        index={idx}
+                    />
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+function SkillChip({ skill, constraintsRef, index }: { skill: any, constraintsRef: any, index: number }) {
+    const [showRating, setShowRating] = useState(false);
+
+    // Generate random float animation
+    const randomDuration = 2 + Math.random() * 2;
+    const randomY = 3 + Math.random() * 5;
+
+    return (
+        <motion.div
+            drag
+            dragConstraints={constraintsRef}
+            dragElastic={0.2}
+            onHoverStart={() => setShowRating(true)}
+            onHoverEnd={() => setShowRating(false)}
+            whileHover={{ scale: 1.1, zIndex: 50, cursor: "grab" }}
+            whileDrag={{ scale: 1.2, zIndex: 100, cursor: "grabbing" }}
+            animate={{
+                y: [0, -randomY, 0],
+            }}
+            transition={{
+                y: {
+                    duration: randomDuration,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.1
+                }
+            }}
+            className="relative"
+        >
+            <div className={`px-4 py-2 rounded-xl border shadow-sm transition-all duration-300 select-none flex items-center justify-center min-w-[80px] ${showRating
+                ? "bg-blue-600 border-blue-600 text-white shadow-blue-500/25 shadow-md"
+                : "bg-white dark:bg-zinc-800 border-gray-200 dark:border-zinc-700 text-gray-700 dark:text-gray-200 hover:border-blue-400"
+                }`}>
+                <span className="text-sm font-semibold whitespace-nowrap flex items-center gap-1">
+                    {showRating ? (
+                        <>
+                            {skill.rating} <Star size={12} fill="currentColor" />
+                        </>
+                    ) : skill.name}
+                </span>
+            </div>
+        </motion.div>
     );
 }
